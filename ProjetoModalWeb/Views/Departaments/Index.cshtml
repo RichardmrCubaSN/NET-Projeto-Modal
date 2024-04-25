@@ -1,0 +1,109 @@
+﻿@model IEnumerable<ProjetoModalWeb.Models.Departament>
+
+@{
+    ViewData["Title"] = "Departaments";
+}
+
+<div class="text-center">
+    <h2 class="display-7 text-center text-primary"> @ViewData["Title"] <span class="fa fa-puzzle-piece"></span> | <img src="~/img/Logostee02.fw.png" style="width: 60px; height: 60px"/></h2>
+</div>
+<p></p>
+<a class="btn small btn-dark" asp-action="Index" asp-controller="Home"><span class="fa fa-arrow-left"></span> Return</a>
+<button class="btn small btn-primary create">New Departament <span class="fa fa-plus-circle"></span></button>
+<p></p>
+
+<div style="height: 415px; width: 1355px; margin-left: 0px; overflow-y: auto; overflow-x: hidden;">
+    <table class="table text-black-50 h6">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptChef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptSChef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptDataIn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.DeptName)</h5>
+            </td>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.DeptChef)</h5>
+            </td>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.DeptSChef)</h5>
+            </td>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.DeptDataIn)</h5>
+            </td>
+            <td>
+                <button class="btn small btn-warning edit" data-value="@item.DeptId">Edit <span class="fa fa-pencil"></span></button> |
+                <button class="btn small btn-info details" data-value="@item.DeptId">Details <span class="fa fa-info-circle"></span></button> |
+                <button class="btn small btn-danger delete" data-value="@item.DeptId">Delete <span class="fa fa-trash"></span></button>
+            </td>            
+        </tr>
+}
+    </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModallabel">
+    <div class="modal-dialog modal-md" style=" width: 500px" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="conteudoModal"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@section scripts{
+
+    <script>
+        $(function () {
+
+            $(".create").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("/Departaments/Create/",
+                    function () {
+                        $("#myModal").modal("show");
+                    });
+            });
+
+            $(".edit").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("/Departaments/Edit/" + id,
+                    function () {
+                        $("#myModal").modal("show");
+                    });
+            });
+
+            $(".details").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("/Departaments/Details/" + id,
+                    function () {
+                        $("#myModal").modal("show");
+                    })
+            });
+
+            $(".delete").click(function () {
+                var id = $(this).data("value");
+                $("#conteudoModal").load("/Departaments/Delete/" + id,
+                    function () {
+                        $("#myModal").modal("show");
+                    })
+            });
+
+        })
+    </script>
+}

@@ -1,0 +1,52 @@
+﻿@model ProjetoModalWeb.Models.Function
+
+@{
+    ViewData["Title"] = "Function";
+}
+
+<h4 class="display-7 text-center text-primary"> Function <span class="fa fa-puzzle-piece"></span> | <img src="~/img/Logostee02.fw.png" style="width: 60px; height: 60px"/></h4>
+<div>
+    <div>
+        <a class="btn btn-info">Details <span class="fa fa-info-circle"></span></a>
+    </div>
+    <div>
+
+        <div class="row">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header text-black-50"></div>
+                    <div class="card-body row">
+
+                        <div class="col-md">
+                            <div class="form-group">
+                                <h6 class="text-black-50">@Html.DisplayNameFor(model => model.FuncName)</h6>
+                                <h5 class="bg-light text-primary">@Html.DisplayFor(model => model.FuncName)</h5>
+                            </div>                            
+                        </div>
+
+                        <div class="col-md">
+                            <div class="form-group">
+                                <h6 class="text-black-50">@Html.DisplayNameFor(model => model.FuncDescription)</h6>
+                                <h5 class="bg-light text-primary">@Html.DisplayFor(model => model.FuncDescription)</h5>
+                            </div>                            
+                        </div>
+
+                        <div class="col-md">                            
+                            <div class="form-group">
+                                <h6 class="text-black-50">@Html.DisplayNameFor(model => model.FuncDataIn)</h6>
+                                <h5 class="bg-light text-primary">@Html.DisplayFor(model => model.FuncDataIn)</h5>
+                            </div>                           
+                        </div>                                              
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p></p>
+<div class="text-center">
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.FuncId"><span class="fa fa-pencil"></span> Editar</a> |
+    <a class="btn btn-dark" asp-action="Index"><span class="fa fa-arrow-left"></span> Voltar</a>
+</div>

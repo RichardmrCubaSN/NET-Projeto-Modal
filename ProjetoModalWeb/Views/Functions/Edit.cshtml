@@ -1,0 +1,66 @@
+﻿@model ProjetoModalWeb.Models.Function
+
+@{
+    ViewData["Title"] = "Function";
+}
+
+<h4 class="display-7 text-center text-primary"> Function <span class="fa fa-puzzle-piece"></span> | <img src="~/img/Logostee02.fw.png" style="width: 60px; height: 60px"/></h4>
+<div>
+    <div>
+        <a class="btn btn-warning">Edit <span class="fa fa-pencil"></span></a>
+    </div>
+    <div>
+
+        <div class="row">
+            <div class="col-md-12">
+                 <form asp-action="Edit">
+                       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                       <input type="hidden" asp-for="FuncId" />
+                       <div class="card">
+                            <div class="card-header text-black-50"></div>
+                            <div class="card-body row">
+
+                            <div class="col-md">
+                                 <div class="form-group">
+                                    <label asp-for="FuncName" class="control-label"></label>
+                                    <input asp-for="FuncName" class="form-control text-primary h5" />                                   
+                                    <span asp-validation-for="FuncName" class="text-danger"></span>
+                                </div>                               
+                            </div>
+
+                            <div class="col-md">
+                                 <div class="form-group">
+                                    <label asp-for="FuncDescription" class="control-label"></label>
+                                    <input asp-for="FuncDescription" class="form-control text-primary h5" />                                   
+                                    <span asp-validation-for="FuncDescription" class="text-danger"></span>
+                                </div>                                                 
+                            </div>
+
+                            <div class="col-md">
+                                 <div class="form-group">
+                                    <label asp-for="FuncDataIn" class="control-label"></label>
+                                    <input asp-for="FuncDataIn" class="form-control text-primary h5" />                                   
+                                    <span asp-validation-for="FuncDataIn" class="text-danger"></span>
+                                </div>                                                              
+                           </div>                                              
+
+                          </div>
+                     </div>
+                     <p></p>
+                    <div class="form-group text-center">
+                        <input type="submit" value="# Guardar" class="btn btn-primary" />
+                        <a class="btn btn-dark" asp-action="Index"><span class="fa fa-arrow-left"></span> Voltar</a>
+                    </div>
+                 </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

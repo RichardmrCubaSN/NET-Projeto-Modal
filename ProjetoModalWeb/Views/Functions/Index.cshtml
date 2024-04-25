@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProjetoModalWeb.Models.Function>
+
+@{
+    ViewData["Title"] = "Functions";
+}
+
+<div class="text-center">
+    <h2 class="display-7 text-center text-primary"> @ViewData["Title"] <span class="fa fa-puzzle-piece"></span> | <img src="~/img/Logostee02.fw.png" style="width: 60px; height: 60px"/></h2>
+</div>
+<p></p>
+<a class="btn small btn-dark" asp-action="Index" asp-controller="Home"><span class="fa fa-arrow-left"></span> Return</a>
+<a class="btn small btn-primary" asp-action="Create"><span class="fa fa-plus-circle"></span>New Function </a>
+<p></p>
+
+<table id="myTable" class="display table text-black-50 h6">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FuncDataIn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.FuncName)</h5>
+            </td>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.FuncDescription)</h5>
+            </td>
+            <td>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => item.FuncDataIn)</h5>
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.FuncId"><span class="fa fa-pencil"></span> Edit</a> |
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.FuncId"><span class="fa fa-info-circle"></span> Details</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.FuncId"><span class="fa fa-trash"></span> Delete</a>
+            </td>          
+                    
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable(
+                {
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                    },
+                    "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+
+                },
+
+            );
+        });
+    </script>
+
+}

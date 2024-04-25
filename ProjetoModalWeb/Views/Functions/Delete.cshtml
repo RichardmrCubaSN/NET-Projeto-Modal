@@ -1,0 +1,58 @@
+﻿@model ProjetoModalWeb.Models.Function
+
+@{
+    ViewData["Title"] = "Function";
+}
+
+<h4 class="display-7 text-center text-primary"> Function <span class="fa fa-puzzle-piece"></span> | <img src="~/img/Logostee02.fw.png" style="width: 60px; height: 60px"/></h4>
+<div>
+    <div>
+        <a class="btn btn-danger">Delete <span class="fa fa-trash"></span></a>
+    </div>
+    <div>
+
+        <div class="row">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header text-black-50"></div>
+                    <div class="card-body row">
+
+                        <div class="col-md">
+                            <div class="form-group">
+                                <h6 class="text-black-50">@Html.DisplayNameFor(model => model.FuncName)</h6>
+                                <h5 class="bg-light text-primary">@Html.DisplayFor(model => model.FuncName)</h5>
+                            </div>                            
+                        </div>
+
+                        <div class="col-md">
+                            <div class="form-group">
+                                <h6 class="text-black-50">@Html.DisplayNameFor(model => model.FuncDescription)</h6>
+                                <h5 class="bg-light text-primary">@Html.DisplayFor(model => model.FuncDescription)</h5>
+                            </div>                            
+                        </div>
+
+                        <div class="col-md">                            
+                            <div class="form-group">
+                                <h6 class="text-black-50">@Html.DisplayNameFor(model => model.FuncDataIn)</h6>
+                                <h5 class="bg-light text-primary">@Html.DisplayFor(model => model.FuncDataIn)</h5>
+                            </div>                           
+                        </div>                                              
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+   
+<p></p>
+<div class="text-center">
+     <h4 class="display-7 text-danger">Are you sure you want to delete this?</h4>
+     <form asp-action="Delete">
+           <input type="hidden" asp-for="FuncId" />
+           <input type="submit" value="Delete" class="btn btn-danger" /> |
+           <a class="btn btn-dark" asp-action="Index"><span class="fa fa-arrow-left"></span> Return</a>
+     </form>
+</div>
+ 
